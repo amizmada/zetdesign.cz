@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zet design </title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span class="accent">&lt;</span>zet_design<span class="accent">/&gt;</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link active">Domů</a></li>
+                <li><a href="#services" class="nav-link">Služby</a></li>
+                <li><a href="portfolio.html" class="nav-link">Projekty</a></li>
+                <li><a href="about.html" class="nav-link">O nás</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="btn btn-header">Poptávka</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="container hero-content">
+            <h1>
+                Design, který dává smysl.<br>
+                Tvoříme <span class="typewriter-highlight"><span id="type-text"></span><span class="cursor"></span></span>
+            </h1>
+            <p style="font-size: 1.3rem; color: #555; max-width: 700px; margin: 40px auto; font-weight: 300;">
+                Digitální zážitky, vizuální identity a projekty s charakterem. <br>Pro značky, které chtějí být vidět.
+            </p>
+            
+            <div class="scroll-wrapper">
+                <span class="scroll-text">Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section container">
+        <div class="section-header">
+            <h2 class="section-title">S čím vám pomůžeme</h2>
+            <p style="color: #666; font-size: 1.1rem; max-width: 500px;">
+                Nejsme továrna na šablony. Ke každému projektu přistupujeme individuálně a hledáme to nejlepší řešení.
+            </p>
+        </div>
+        
+        <div class="services-container">
+            <div class="service-panel">
+                <span class="panel-num">01</span>
+                <div class="panel-icon">&lt;/&gt;</div> 
+                <div class="panel-content">
+                    <h3 class="panel-title">Webdesign</h3>
+                    <p class="panel-desc">Moderní, rychlé a responzivní weby. Zaměřujeme se na čistotu, funkčnost a perfektní zobrazení na mobilech.</p>
+                </div>
+            </div>
+            <div class="service-panel">
+                <span class="panel-num">02</span>
+                <div class="panel-icon">Aa</div> 
+                <div class="panel-content">
+                    <h3 class="panel-title">Branding</h3>
+                    <p class="panel-desc">Víc než jen logo. Vytvoříme vizuální jazyk, který bude vyprávět váš příběh a odliší vás v davu.</p>
+                </div>
+            </div>
+            <div class="service-panel">
+                <span class="panel-num">03</span>
+                <div class="panel-icon">Pr</div> 
+                <div class="panel-content">
+                    <h3 class="panel-title">Grafika & Tisk</h3>
+                    <p class="panel-desc">Hmatatelný design. Od vizitek přes plakáty až po velkoformátové polepy nebo merch.</p>
+                </div>
+            </div>
+            <div class="service-panel">
+                <span class="panel-num">04</span>
+                <div class="panel-icon">@</div> 
+                <div class="panel-content">
+                    <h3 class="panel-title">Social</h3>
+                    <p class="panel-desc">Vizuální styl pro vaše sítě. Šablony a kreativa, díky které bude váš feed vypadat světově.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end;">
+                <div>
+                    <h2 class="section-title" style="margin-bottom: 10px;">Vybrané práce</h2>
+                    <p style="color: #666;">Ukázka toho nejlepšího, co jsme vytvořili.</p>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200');"></div>
+                    <div class="project-overlay">
+                        <div>
+                            <span class="project-category">Branding</span>
+                            <span class="project-title">Urban Store</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200');"></div>
+                    <div class="project-overlay">
+                        <div>
+                            <span class="project-category">Webdesign</span>
+                            <span class="project-title">Next Tech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="portfolio.html" class="btn btn-outline">Prohlédnout celé portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-cta">
+                    <h2>Vaše vize,<br>náš design.</h2>
+                    <p>Pojďme vytvořit něco, o čem se bude mluvit. Hledáme partnery pro odvážné projekty.</p>
+                    <a href="mailto:hello@zetdesign.cz" class="btn btn-footer">Začít spolupráci</a>
+                </div>
+                <div class="footer-links" style="display: flex; gap: 80px; justify-content: flex-end;">
+                    <div>
+                        <h4>MENU</h4>
+                        <ul>
+                            <li><a href="index.html">Domů</a></li>
+                            <li><a href="#services">Služby</a></li>
+                            <li><a href="portfolio.html">Projekty</a></li>
+                            <li><a href="about.html">O nás</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>SOCIAL</h4>
+                        <ul>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="#">Behance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <span>&copy; 2024 Zet Design Studio. Všechna práva vyhrazena.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
