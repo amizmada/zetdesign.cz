@@ -126,35 +126,35 @@
 
     <div id="contact-modal" class="modal-overlay">
         <div class="modal-content">
-            <button class="modal-close">&times;</button>
+            <button class="modal-close" aria-label="Zavřít">&times;</button>
+            
             <div class="modal-header">
-                <h2>Napište nám</h2>
-                <p>Odpovíme do 24 hodin. Nebo nám rovnou zavolejte.</p>
+                <h2>Pojďme tvořit</h2>
+                <p>Popište nám svůj nápad a my se vám ozveme zpět.</p>
             </div>
+
             <form class="contact-form">
-                <div class="form-group">
-                    <label>Jméno a příjmení</label>
-                    <input type="text" placeholder="Jan Novák" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Jméno</label>
+                        <input type="text" placeholder="Vaše jméno" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="vas@email.cz" required>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email" placeholder="jan@firma.cz" required>
+                    <label>O čem budeme mluvit?</label>
+                    <textarea rows="5" placeholder="Napište nám, s čím vám můžeme pomoci (web, branding, grafika...)" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label>Typ projektu</label>
-                    <select required>
-                        <option value="" disabled selected>Vyberte možnost</option>
-                        <option value="web">Webdesign & Vývoj</option>
-                        <option value="brand">Branding & Logo</option>
-                        <option value="print">Grafika & Tisk</option>
-                        <option value="other">Jiné</option>
-                    </select>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-footer full-width">Odeslat poptávku</button>
+                    <p class="form-note">Kliknutím na tlačítko souhlasíte se zpracováním údajů.</p>
                 </div>
-                <div class="form-group">
-                    <label>Zpráva</label>
-                    <textarea rows="4" placeholder="Popište stručně váš projekt..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-footer" style="width: 100%; border: none;">Odeslat zprávu</button>
             </form>
         </div>
     </div>
