@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O nás | zet design</title>
     
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
@@ -25,7 +29,7 @@
                 <li><a href="about.html" class="nav-link active">O nás</a></li>
             </ul>
         </nav>
-        <a href="#contact" class="btn btn-header">Poptávka</a>
+        <a href="#" class="btn btn-header">Poptávka</a>
     </header>
 
     <div class="page-header container">
@@ -62,31 +66,23 @@
     <section class="team-section">
         <div class="container">
             <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">Tým</h2>
-            
             <div class="team-grid team-two-cols">
-                
-                <div class="team-card no-photo-card">
-                    <div class="avatar-circle">
-                        <span>AN</span>
-                    </div>
+                <div class="team-card">
+                    <div class="avatar-circle"><span>AN</span></div>
                     <div class="team-info">
                         <h3>Alex Novák</h3>
                         <span class="role">Design & Branding</span>
                         <p class="bio">Vizuální stránka věci. Od loga přes barvy až po pixel-perfect UI design.</p>
                     </div>
                 </div>
-
-                <div class="team-card no-photo-card">
-                    <div class="avatar-circle">
-                        <span>PB</span>
-                    </div>
+                <div class="team-card">
+                    <div class="avatar-circle"><span>PB</span></div>
                     <div class="team-info">
                         <h3>Petr Blažek</h3>
                         <span class="role">Development & Tech</span>
                         <p class="bio">Technické řešení. Kód, rychlost webu, animace a funkčnost.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -110,15 +106,15 @@
         </div>
     </section>
 
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-cta">
                     <h2>Máte nápad?<br>Pojďme ho realizovat.</h2>
                     <p>Hledáme partnery pro odvážné projekty. Zastavte se u nás na kafe a probereme to.</p>
-                    <a href="mailto:hello@zetdesign.cz" class="btn btn-footer">Začít spolupráci</a>
+                    <a href="#" class="btn btn-footer">Začít spolupráci</a>
                 </div>
-                <div class="footer-links" style="display: flex; gap: 80px; justify-content: flex-end;">
+                <div class="footer-links">
                     <div>
                         <h4>MENU</h4>
                         <ul>
@@ -128,22 +124,48 @@
                             <li><a href="about.html">O nás</a></li>
                         </ul>
                     </div>
-                    <div>
-                        <h4>SOCIAL</h4>
-                        <ul>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">LinkedIn</a></li>
-                            <li><a href="#">Behance</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <div class="copyright">
-                <span>&copy; 2024 Zet Design Studio</span>
-                <span>Prague, Czech Republic</span>
+                <span>&copy; 2024 Zet Design Studio. Všechna práva vyhrazena.</span>
             </div>
         </div>
     </footer>
+
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <h2>Napište nám</h2>
+                <p>Odpovíme do 24 hodin. Nebo nám rovnou zavolejte.</p>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label>Jméno a příjmení</label>
+                    <input type="text" placeholder="Jan Novák" required>
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" placeholder="jan@firma.cz" required>
+                </div>
+                <div class="form-group">
+                    <label>Typ projektu</label>
+                    <select required>
+                        <option value="" disabled selected>Vyberte možnost</option>
+                        <option value="web">Webdesign & Vývoj</option>
+                        <option value="brand">Branding & Logo</option>
+                        <option value="print">Grafika & Tisk</option>
+                        <option value="other">Jiné</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Zpráva</label>
+                    <textarea rows="4" placeholder="Popište stručně váš projekt..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-footer" style="width: 100%; border: none;">Odeslat zprávu</button>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
