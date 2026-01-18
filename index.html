@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zet_design</title>
+    <title>zet_design | Studio</title>
+
+    <meta name="title" content="zet_design | Studio">
+    <meta name="description" content="Digitální zážitky, vizuální identity a projekty s charakterem.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.zetdesign.cz/">
+    <meta property="og:title" content="zet_design | Design, který dává smysl.">
+    <meta property="og:description" content="Digitální zážitky, vizuální identity a projekty s charakterem.">
+    <meta property="og:image" content="https://www.zetdesign.cz/assets/og-image.png">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.zetdesign.cz/">
-    <meta property="og:title" content="zet design | Design, který dává smysl.">
-    <meta property="og:description" content="Design přímo na míru. Žádné šablony, žádný korporátní bullshit.">
-    <meta property="og:image" content="https://www.zetdesign.cz/assets/og-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +48,7 @@
                 Design, který dává smysl.<br>
                 Tvoříme <span class="typewriter-highlight"><span id="type-text"></span><span class="cursor"></span></span>
             </h1>
-            <p style="font-size: 1.3rem; color: #555; max-width: 700px; margin: 40px auto; font-weight: 300;">
+            <p>
                 Digitální zážitky, vizuální identity a projekty s charakterem. <br>Pro značky, které chtějí být vidět.
             </p>
             
@@ -110,21 +113,34 @@
             </div>
 
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" 
+                     onclick="openProject(this)"
+                     data-category="Branding"
+                     data-title="Urban Store"
+                     data-desc="Kompletní rebranding pro předního prodejce streetwear módy. Cílem bylo sjednotit vizuální styl napříč e-shopem a kamennými prodejnami."
+                     data-image="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200');"></div>
                     <div class="project-overlay">
                         <div>
                             <span class="project-category">Branding</span>
                             <span class="project-title">Urban Store</span>
+                            <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                
+                <div class="project-card"
+                     onclick="openProject(this)"
+                     data-category="Webdesign"
+                     data-title="Next Tech"
+                     data-desc="Futuristický web pro technologický startup. Důraz na rychlost načítání, 3D prvky a tmavý režim pro lepší čitelnost."
+                     data-image="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200');"></div>
                     <div class="project-overlay">
                         <div>
                             <span class="project-category">Webdesign</span>
                             <span class="project-title">Next Tech</span>
+                            <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
                 </div>
@@ -144,7 +160,7 @@
                     <p>Pojďme vytvořit něco, o čem se bude mluvit. Hledáme partnery pro odvážné projekty.</p>
                     <a href="#" class="btn btn-footer">Začít spolupráci</a>
                 </div>
-                <div class="footer-links" style="display: flex; gap: 80px; justify-content: flex-end;">
+                <div class="footer-links">
                     <div>
                         <h4>MENU</h4>
                         <ul>
@@ -166,7 +182,7 @@
             </div>
 
             <div class="copyright">
-                <span>&copy; 2024 Zet Design Studio. Všechna práva vyhrazena.</span>
+                <span>&copy; 2024 zet_design. Všechna práva vyhrazena.</span>
             </div>
         </div>
     </footer>
@@ -174,35 +190,43 @@
     <div id="contact-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" aria-label="Zavřít">&times;</button>
-            
             <div class="modal-header">
                 <h2>Pojďme tvořit</h2>
                 <p>Popište nám svůj nápad a my se vám ozveme zpět.</p>
             </div>
-
             <form class="contact-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label>Jméno</label>
                         <input type="text" placeholder="Vaše jméno" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>E-mail</label>
                         <input type="email" placeholder="vas@email.cz" required>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label>O čem budeme mluvit?</label>
                     <textarea rows="5" placeholder="Napište nám, s čím vám můžeme pomoci (web, branding, grafika...)" required></textarea>
                 </div>
-
                 <div class="form-footer">
                     <button type="submit" class="btn btn-footer full-width">Odeslat poptávku</button>
                     <p class="form-note">Kliknutím na tlačítko souhlasíte se zpracováním údajů.</p>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div id="project-modal" class="modal-overlay">
+        <div class="project-modal-content">
+            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+            <div class="project-modal-image" id="modal-img-target"></div>
+            <div class="project-modal-info">
+                <span class="modal-category" id="modal-cat-target">Kategorie</span>
+                <h2 class="modal-title" id="modal-title-target">Název projektu</h2>
+                <p class="modal-desc" id="modal-desc-target">Popis...</p>
+                <a href="#" onclick="closeProjectModal(); document.querySelector('#contact-modal').classList.add('active');" class="btn btn-outline" style="align-self: flex-start;">Poptat podobný projekt</a>
+            </div>
         </div>
     </div>
 

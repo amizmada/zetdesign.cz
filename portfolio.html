@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | zet_design</title>
+    <title>Projekty | zet_design</title>
+
+    <meta name="title" content="Projekty | zet_design">
+    <meta name="description" content="Ukázka naší práce. Webdesign, branding, tiskoviny.">
     
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.zetdesign.cz/">
-    <meta property="og:title" content="zet design | Design, který dává smysl.">
-    <meta property="og:description" content="Design přímo na míru. Žádné šablony, žádný korporátní bullshit.">
-    <meta property="og:image" content="https://www.zetdesign.cz/assets/og-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +29,7 @@
                 <li><a href="index.html" class="nav-link">Domů</a></li>
                 <li><a href="index.html#services" class="nav-link">Služby</a></li>
                 <li><a href="portfolio.html" class="nav-link active">Projekty</a></li> 
-                <li><a href="about.html" class="nav-link">O nás</a></li>
+                <li><a href="kontakt.html" class="nav-link">Kontakty</a></li>
             </ul>
         </nav>
         <a href="#" class="btn btn-header">Poptávka</a>
@@ -46,60 +43,103 @@
     <section class="projects-section">
         <div class="container">
             <div class="projects-grid">
-                <div class="project-card">
+                
+                <div class="project-card"
+                     onclick="openProject(this)"
+                     data-category="Branding"
+                     data-title="Urban Store"
+                     data-desc="Kompletní rebranding pro předního prodejce streetwear módy. Cílem bylo sjednotit vizuální styl napříč e-shopem a kamennými prodejnami."
+                     data-image="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200');"></div>
                     <div class="project-overlay">
                         <div>
                             <span class="project-category">Branding</span>
                             <span class="project-title">Urban Store</span>
+                            <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card"
+                     onclick="openProject(this)"
+                     data-category="Webdesign"
+                     data-title="Next Tech"
+                     data-desc="Futuristický web pro technologický startup. Důraz na rychlost načítání, 3D prvky a tmavý režim."
+                     data-image="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200');"></div>
                     <div class="project-overlay">
                         <div>
                             <span class="project-category">Webdesign</span>
                             <span class="project-title">Next Tech</span>
+                            <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card"
+                     onclick="openProject(this)"
+                     data-category="Architektura"
+                     data-title="Mono Block"
+                     data-desc="Minimalistická prezentace pro architektonické studio. Čisté linie, velké fotografie a důraz na detail."
+                     data-image="https://images.unsplash.com/photo-1558655146-d09347e0b7a8?q=80&w=1200">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1558655146-d09347e0b7a8?q=80&w=1200');"></div>
                     <div class="project-overlay">
                         <div>
                             <span class="project-category">Architektura</span>
                             <span class="project-title">Mono Block</span>
+                            <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card"
+                     onclick="openProject(this)"
+                     data-category="Print"
+                     data-title="Art Gallery"
+                     data-desc="Série plakátů a katalog pro moderní galerii umění. Kombinace výrazné typografie a abstraktních tvarů."
+                     data-image="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200');"></div>
                     <div class="project-overlay">
                         <div>
                             <span class="project-category">Print</span>
                             <span class="project-title">Art Gallery</span>
+                            <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+
+                 <div class="project-card"
+                     onclick="openProject(this)"
+                     data-category="App Design"
+                     data-title="Fitness Pro"
+                     data-desc="UI/UX design pro fitness aplikaci. Cílem bylo vytvořit intuitivní rozhraní pro sledování tréninků."
+                     data-image="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200');"></div>
                     <div class="project-overlay">
                         <div>
                             <span class="project-category">App Design</span>
                             <span class="project-title">Fitness Pro</span>
+                            <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+
+                 <div class="project-card"
+                     onclick="openProject(this)"
+                     data-category="Rebranding"
+                     data-title="Solar Energy"
+                     data-desc="Kompletní vizuální identita pro firmu zabývající se solární energií. Logo, web, polepy aut."
+                     data-image="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?q=80&w=1200">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1600508774634-4e11d34730e2?q=80&w=1200');"></div>
                     <div class="project-overlay">
                         <div>
                             <span class="project-category">Rebranding</span>
                             <span class="project-title">Solar Energy</span>
+                            <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -122,10 +162,18 @@
                             <li><a href="about.html">O nás</a></li>
                         </ul>
                     </div>
+                    <div>
+                        <h4>SOCIAL</h4>
+                        <ul>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="#">Behance</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
-                <span>&copy; 2024 Zet Design Studio. Všechna práva vyhrazena.</span>
+                <span>&copy; 2024 zet_design. Všechna práva vyhrazena.</span>
             </div>
         </div>
     </footer>
@@ -133,35 +181,43 @@
     <div id="contact-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" aria-label="Zavřít">&times;</button>
-            
             <div class="modal-header">
                 <h2>Pojďme tvořit</h2>
                 <p>Popište nám svůj nápad a my se vám ozveme zpět.</p>
             </div>
-
             <form class="contact-form">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Jméno</label>
-                        <input type="text" placeholder="Vaše jméno" required>
+                        <label>Jméno a příjmení</label>
+                        <input type="text" placeholder="Jan Novák" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input type="email" placeholder="vas@email.cz" required>
+                        <input type="email" placeholder="jan@firma.cz" required>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label>O čem budeme mluvit?</label>
                     <textarea rows="5" placeholder="Napište nám, s čím vám můžeme pomoci (web, branding, grafika...)" required></textarea>
                 </div>
-
                 <div class="form-footer">
                     <button type="submit" class="btn btn-footer full-width">Odeslat poptávku</button>
                     <p class="form-note">Kliknutím na tlačítko souhlasíte se zpracováním údajů.</p>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div id="project-modal" class="modal-overlay">
+        <div class="project-modal-content">
+            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+            <div class="project-modal-image" id="modal-img-target"></div>
+            <div class="project-modal-info">
+                <span class="modal-category" id="modal-cat-target">Kategorie</span>
+                <h2 class="modal-title" id="modal-title-target">Název projektu</h2>
+                <p class="modal-desc" id="modal-desc-target">Popis...</p>
+                <a href="#" onclick="closeProjectModal(); document.querySelector('#contact-modal').classList.add('active');" class="btn btn-outline" style="align-self: flex-start;">Poptat podobný projekt</a>
+            </div>
         </div>
     </div>
 
