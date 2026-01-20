@@ -39,7 +39,7 @@ ul { list-style: none; }
 
 /* 2. HEADER & NAVIGACE */
 header {
-    height: 100px;
+    height: 85px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -98,6 +98,7 @@ nav ul { display: flex; gap: 40px; }
     background-position: 100% 0;
     color: #000000;
     box-shadow: 0 4px 15px rgba(30, 255, 0, 0.3);
+    padding: 14px 36px;
 }
 
 .btn-header:hover { 
