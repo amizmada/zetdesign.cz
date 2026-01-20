@@ -141,4 +141,39 @@ if (typeText) {
         }
     }
     type();
+
+    /* --- ROZSVÍCENÍ KARET PŘI SCROLLOVÁNÍ (MOBILE) --- */
+
+// Spustí se při scrollování
+window.addEventListener('scroll', highlightOnScroll);
+
+function highlightOnScroll() {
+    // Funkce běží jen na mobilech/tabletech (do šířky 1024px)
+    // Na PC necháme fungovat klasický hover myší
+    if (window.innerWidth > 1024) {
+        // Pro jistotu vyčistíme, kdyby někdo zmenšoval okno prohlížeče
+        document.querySelectorAll('.service-panel').forEach(p => p.classList.remove('mobile-active'));
+        return;
+    }
+
+    const panels = document.querySelectorAll('.service-panel');
+    const centerScreen = window.innerHeight / 2; // Najdeme střed obrazovky
+
+    panels.forEach(panel => {
+        const rect = panel.getBoundingClientRect();
+        
+        // Spočítáme střed dané karty
+        const panelCenter = rect.top + (rect.height / 2);
+        
+        // Změříme vzdálenost středu karty od středu obrazovky
+        const distance = Math.abs(centerScreen - panelCenter);
+
+        // Pokud je karta blízko středu (tolerance 180px), rozsvítíme ji
+        if (distance < 180) {
+            panel.classList.add('mobile-active');
+        } else {
+            panel.classList.remove('mobile-active');
+        }
+    });
+}
 }
