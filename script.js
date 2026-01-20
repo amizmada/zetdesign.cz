@@ -1,118 +1,144 @@
-/* --- script.js --- */
+/* --- script.js (FINAL VERSION) --- */
 
-document.addEventListener('DOMContentLoaded', () => {
+// 1. OTEVŘENÍ DETAILU PROJEKTU
+function openProject(card) {
+    const modal = document.getElementById('project-modal');
     
-    // 1. TYPEWRITER EFEKT
-    const textElement = document.getElementById('type-text');
+    // Načtení textů z data atributů karty
+    const title = card.getAttribute('data-title');
+    const category = card.getAttribute('data-category');
+    const desc = card.getAttribute('data-desc');
     
-    if (textElement) {
-        const phrases = ['webové stránky', 'vizuální identity', 'značky', 'řešení', 'loga', 'tiskoviny', 'vizitky'];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+    // Vložení textů do modalu
+    document.getElementById('modal-title-target').innerText = title;
+    document.getElementById('modal-cat-target').innerText = category;
+    document.getElementById('modal-desc-target').innerText = desc;
 
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(type, typeSpeed);
+    // --- LOGIKA PRO OBRÁZKY (GALERIE) ---
+    const galleryContainer = document.getElementById('modal-gallery-target');
+    
+    // Pokud kontejner pro galerii v HTML neexistuje (máš staré HTML), zkusíme staré ID
+    if (!galleryContainer) {
+        console.warn("Nenalezen 'modal-gallery-target'. Zkontroluj HTML v project-modal.");
+        const oldImgTarget = document.getElementById('modal-img-target');
+        if (oldImgTarget) {
+            // Fallback pro starou verzi (jedna fotka na pozadí)
+            const singleImg = card.getAttribute('data-image');
+            oldImgTarget.style.backgroundImage = `url('${singleImg}')`;
         }
+    } else {
+        // NOVÁ VERZE: Vyčistit galerii a naplnit novými fotkami
+        galleryContainer.innerHTML = ''; 
         
-        setTimeout(type, 1000);
+        const imagesRaw = card.getAttribute('data-images'); // Hledáme pole fotek
+        const singleImageRaw = card.getAttribute('data-image'); // Hledáme jednu fotku (staré data)
+        
+        let images = [];
+
+        // Zkusíme načíst data-images (JSON pole)
+        if (imagesRaw) {
+            try {
+                images = JSON.parse(imagesRaw);
+            } catch (e) {
+                console.error("Chyba v JSON obrázků, beru to jako jeden string.");
+                images = [imagesRaw];
+            }
+        } 
+        // Pokud není pole, zkusíme data-image (starý formát)
+        else if (singleImageRaw) {
+            images = [singleImageRaw];
+        }
+
+        // Vytvoření <img> elementů
+        if (images.length > 0) {
+            images.forEach(imgUrl => {
+                const imgElement = document.createElement('img');
+                imgElement.src = imgUrl;
+                imgElement.alt = title;
+                imgElement.style.width = "100%";
+                imgElement.style.display = "block";
+                imgElement.style.marginBottom = "4px"; // Mezera mezi fotkami
+                galleryContainer.appendChild(imgElement);
+            });
+        }
     }
 
-    // 2. KONTAKTNÍ MODAL
-    const contactModal = document.getElementById('contact-modal');
-    const contactCloseBtn = contactModal ? contactModal.querySelector('.modal-close') : null;
-    const contactTriggers = document.querySelectorAll('.btn-header, .btn-footer'); 
+    // Zobrazení modalu (přidání třídy active)
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Zamezí scrollování stránky na pozadí
+}
 
-    if (contactModal) {
-        const openContactModal = (e) => {
-            e.preventDefault();
-            contactModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        };
+// 2. ZAVŘENÍ MODALU (Projekt i Kontakt)
+function closeProjectModal() {
+    const activeModals = document.querySelectorAll('.modal-overlay.active');
+    activeModals.forEach(modal => {
+        modal.classList.remove('active');
+    });
+    document.body.style.overflow = ''; // Obnoví scrollování
+}
 
-        const closeContactModal = () => {
+// 3. ZAVŘENÍ KLIKEM MIMO OKNO (Overlay)
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal-overlay')) {
+        event.target.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// 4. OBSLUHA KONTAKTNÍHO MODALU (pokud není řešeno inline v HTML)
+const contactBtns = document.querySelectorAll('a[href="#contact-modal"], .btn-header, .footer-cta .btn-footer');
+const contactModal = document.getElementById('contact-modal');
+
+if (contactModal) {
+    // Otevření
+    contactBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Pokud tlačítko nemá onclick v HTML, otevřeme modal JS
+            if (!btn.getAttribute('onclick')) {
+                e.preventDefault();
+                contactModal.classList.add('active');
+            }
+        });
+    });
+
+    // Zavření křížkem
+    const closeBtn = contactModal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
             contactModal.classList.remove('active');
-            document.body.style.overflow = ''; 
-        };
+        });
+    }
+}
 
-        contactTriggers.forEach(btn => btn.addEventListener('click', openContactModal));
+// 5. TYPEWRITER EFEKT (Pro hlavní stranu)
+const typeText = document.getElementById('type-text');
+if (typeText) {
+    const words = ["webové stránky", "vizuální identity", "digitální produkty", "unikátní značky"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentWord = words[wordIndex];
         
-        if (contactCloseBtn) contactCloseBtn.addEventListener('click', closeContactModal);
-
-        contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) closeContactModal();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && contactModal.classList.contains('active')) closeContactModal();
-        });
-    }
-
-    // 3. PROJEKTOVÝ MODAL
-    const projectModal = document.getElementById('project-modal');
-    
-    // Globální funkce pro zavření, aby šla volat z HTML
-    window.closeProjectModal = function() {
-        if (projectModal) {
-            projectModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
-
-    // Globální funkce pro otevření (volaná z onclick na kartě)
-    window.openProject = function(element) {
-        const title = element.getAttribute('data-title');
-        const category = element.getAttribute('data-category');
-        const desc = element.getAttribute('data-desc');
-        const image = element.getAttribute('data-image');
-
-        if (document.getElementById('modal-title-target')) {
-            document.getElementById('modal-title-target').innerText = title;
-            document.getElementById('modal-cat-target').innerText = category;
-            document.getElementById('modal-desc-target').innerText = desc;
-            document.getElementById('modal-img-target').style.backgroundImage = `url('${image}')`;
+        if (isDeleting) {
+            typeText.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typeText.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
         }
 
-        if (projectModal) {
-            projectModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        if (!isDeleting && charIndex === currentWord.length) {
+            isDeleting = true;
+            setTimeout(type, 2000); // Čekání po napsání slova
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 500);
+        } else {
+            setTimeout(type, isDeleting ? 50 : 100);
         }
     }
-
-    if (projectModal) {
-        // Zavření křížkem uvnitř modalu je řešeno přes onclick v HTML
-        
-        // Zavření kliknutím na pozadí
-        projectModal.addEventListener('click', (e) => {
-            if (e.target === projectModal) window.closeProjectModal();
-        });
-
-        // Zavření Escapem
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && projectModal.classList.contains('active')) {
-                window.closeProjectModal();
-            }
-        });
-    }
-});
+    type();
+}
