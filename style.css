@@ -456,6 +456,7 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
 }
 
 /* --- Tablet / Menší Laptop (1024px) --- */
+/* --- Tablet / Menší Laptop (1024px) --- */
 @media (max-width: 1024px) {
     .container, header { padding-left: 30px !important; padding-right: 30px !important; }
     .hero h1 { font-size: 4rem; }
@@ -464,12 +465,34 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
     .modal-title { font-size: 2.5rem; }
     .project-modal-content { grid-template-columns: 1fr; }
     
-    /* Úpravy formuláře */
+    /* --- Úpravy formuláře pro TABLET --- */
     .form-section-modern { padding: 60px 40px; }
-    .form-modern-grid { grid-template-columns: 1fr; gap: 40px; }
-    .form-text-side h2 { font-size: 2.8rem; }
-    .form-text-side { text-align: center; display: flex; flex-direction: column; align-items: center; }
-    .form-text-side p { max-width: 100%; }
+    
+    /* Změna na jeden sloupec (text nahoře, formulář dole) */
+    .form-modern-grid { 
+        grid-template-columns: 1fr; 
+        gap: 50px; 
+    }
+    
+    /* Vycentrování textu */
+    .form-text-side { 
+        text-align: center; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+    }
+    
+    .form-text-side p { max-width: 600px; }
+    
+    /* Vycentrování zelené čárky */
+    .accent-line { margin: 0 auto 25px auto; }
+
+    /* Omezení šířky formuláře, ať není na tabletu roztažený od kraje ke kraji */
+    .form-card-side {
+        max-width: 650px; /* Ideální šířka pro tablet */
+        width: 100%;
+        margin: 0 auto; /* Vycentrování karty */
+    }
 }
 
 /* --- Tablet na výšku / Větší mobil (900px) --- */
@@ -571,7 +594,10 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
 
 /* --- Mobil (do 600px) --- */
 @media (max-width: 600px) {
-    .container, header, .footer-wrapper, .services-section { padding-left: 20px !important; padding-right: 20px !important; }
+    .container, header, .footer-wrapper, .services-section { 
+        padding-left: 20px !important; 
+        padding-right: 20px !important; 
+    }
     .page-header { padding-top: 110px; padding-bottom: 40px; }
     
     header { height: 80px; }
@@ -599,13 +625,45 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
     .footer-cta p { font-size: 1rem; }
     .footer-links { gap: 30px !important; }
 
-    .form-row { grid-template-columns: 1fr; gap: 0; }
     .page-title { font-size: 2.5rem; }
     .contact-card { padding: 30px; }
     .billing-section { padding: 60px 0; }
-    .form-section-modern { padding: 40px 25px; border-radius: 16px; }
-    .form-card-side { padding: 30px 20px; }
-    .form-text-side h2 { font-size: 2.2rem; }
+
+    .form-section-modern { 
+        padding: 40px 15px; /* Menší vnější okraj šedého boxu */
+        border-radius: 16px; 
+    }
+    
+    .form-modern-grid {
+        display: flex;
+        flex-direction: column; /* Pod sebe */
+        gap: 30px;
+    }
+
+    .form-text-side { 
+        text-align: left; /* Zarovnání doleva je na mobilu čitelnější */
+    }
+    
+    .form-text-side h2 { font-size: 2rem; }
+
+    .form-card-side { 
+        padding: 25px 15px; /* Menší vnitřní okraj bílé karty */
+        width: 100%;
+    }
+
+    /* Zajistí, že inputy nebudou přetékat */
+    .form-card-side input, 
+    .form-card-side textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box; /* Klíčové pro správnou šířku */
+    }
+
+    .form-row { 
+        grid-template-columns: 1fr; /* Jméno a Email pod sebe */
+        gap: 0; 
+    }
 
     /* Oprava pozice menu a overlay na malém mobilu */
     .mobile-nav, .mobile-menu-overlay { top: 80px; height: calc(100vh - 80px); }
