@@ -33,7 +33,7 @@
             <ul>
                 <li><a href="index.html" class="nav-link active">Domů</a></li>
                 <li><a href="#services" class="nav-link">Služby</a></li>
-                <li><a href="portfolio.html" class="nav-link">Projekty</a></li>
+                <li><a href="projekty.html" class="nav-link">Projekty</a></li>
                 <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
             </ul>
         </nav>
@@ -87,8 +87,8 @@
                 <span class="panel-num">03</span>
                 <div class="panel-icon">Pr</div> 
                 <div class="panel-content">
-                    <h3 class="panel-title">Grafika & Tisk</h3>
-                    <p class="panel-desc">Hmatatelný design. Od vizitek přes plakáty až po velkoformátové polepy nebo merch.</p>
+                    <h3 class="panel-title">Grafika & Tiskoviny</h3>
+                    <p class="panel-desc">Hmatatelný design. Navrhneme vizitky, plakáty či polepy a připravíme precizní data pro výrobu.</p>
                 </div>
             </div>
             <div class="service-panel">
@@ -112,37 +112,32 @@
             </div>
 
             <div class="projects-grid">
-                <div class="project-card" 
-                     onclick="openProject(this)"
-                     data-category="Branding"
-                     data-title="Urban Store"
-                     data-desc="Kompletní rebranding pro předního prodejce streetwear módy. Cílem bylo sjednotit vizuální styl napříč e-shopem a kamennými prodejnami."
-                     data-image="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200">
-                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200');"></div>
+                <a href="/projects/project-uludvicka.html" class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('/assets/projects/uludvicka/mockup.webp');">
+                    </div>
                     <div class="project-overlay">
                         <div>
-                            <span class="project-category">Branding</span>
-                            <span class="project-title">Urban Store</span>
+                            <span class="project-category">Branding &Webdesign</span>
+                            <span class="project-title">U Ludvíčka</span>
                             <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <div class="project-card"
-                     onclick="openProject(this)"
-                     data-category="Webdesign"
-                     data-title="Next Tech"
-                     data-desc="Futuristický web pro technologický startup. Důraz na rychlost načítání, 3D prvky a tmavý režim pro lepší čitelnost."
-                     data-image="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200">
-                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200');"></div>
+                <a href="/projects/project-domix.html" class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('/assets/projects/domix/mockup.webp');">
+                    </div>
                     <div class="project-overlay">
                         <div>
                             <span class="project-category">Webdesign</span>
-                            <span class="project-title">Next Tech</span>
+                            <span class="project-title">Domix</span>
                             <span class="click-hint">Zobrazit detail</span>
                         </div>
                     </div>
-                </div>
+                </a>
+
             </div>
             
             <div style="text-align: center; margin-top: 60px;">
@@ -153,35 +148,37 @@
 
     <footer id="contact">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-cta">
-                    <h2>Vaše vize,<br>náš design.</h2>
-                    <p>Pojďme vytvořit něco, o čem se bude mluvit. <br> Hledáme partnery pro odvážné projekty.</p>
-                    <a href="#" class="btn btn-footer">Začít spolupráci</a>
-                </div>
-                <div class="footer-links">
-                    <div>
-                        <h4>MENU</h4>
-                        <ul>
-                            <li><a href="index.html">Domů</a></li>
-                            <li><a href="#services">Služby</a></li>
-                            <li><a href="portfolio.html">Projekty</a></li>
-                            <li><a href="kontakt.html">Kontakt</a></li>
-                        </ul>
+            <div class="footer-wrapper">
+                <div class="footer-grid">
+                    <div class="footer-cta">
+                        <h2>Vaše vize,<br>náš design.</h2>
+                        <p>Pojďme vytvořit něco, o čem se bude mluvit. <br> Hledáme partnery pro odvážné projekty.</p>
+                        <a href="#" class="btn btn-footer">Začít spolupráci</a>
                     </div>
-                    <div>
-                        <h4>SOCIAL</h4>
-                        <ul>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">LinkedIn</a></li>
-                            <li><a href="#">Behance</a></li>
-                        </ul>
+                    <div class="footer-links">
+                        <div>
+                            <h4>MENU</h4>
+                            <ul>
+                                <li><a href="index.html">Domů</a></li>
+                                <li><a href="#services">Služby</a></li>
+                                <li><a href="portfolio.html">Projekty</a></li>
+                                <li><a href="kontakt.html">Kontakt</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>SOCIAL</h4>
+                            <ul>
+                                <li><a href="#">Instagram</a></li>
+                                <li><a href="#">LinkedIn</a></li>
+                                <li><a href="#">Behance</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="copyright">
-                <span>&copy; 2024 zet_design. Všechna práva vyhrazena.</span>
+                <div class="copyright">
+                    <span>&copy; 2024 zet_design. Všechna práva vyhrazena.</span>
+                </div>
             </div>
         </div>
     </footer>
@@ -213,19 +210,6 @@
                     <p class="form-note">Kliknutím na tlačítko souhlasíte se zpracováním údajů.</p>
                 </div>
             </form>
-        </div>
-    </div>
-
-    <div id="project-modal" class="modal-overlay">
-        <div class="project-modal-content">
-            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
-            <div class="project-modal-image" id="modal-img-target"></div>
-            <div class="project-modal-info">
-                <span class="modal-category" id="modal-cat-target">Kategorie</span>
-                <h2 class="modal-title" id="modal-title-target">Název projektu</h2>
-                <p class="modal-desc" id="modal-desc-target">Popis...</p>
-                <a href="#" onclick="closeProjectModal(); document.querySelector('#contact-modal').classList.add('active');" class="btn btn-outline" style="align-self: flex-start;">Poptat podobný projekt</a>
-            </div>
         </div>
     </div>
 
