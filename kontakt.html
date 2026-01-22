@@ -15,10 +15,10 @@
         </a>
         <nav>
             <ul>
-                <li><a href="index.html" class="nav-link">Domů</a></li>
-                <li><a href="index.html#services" class="nav-link">Služby</a></li>
-                <li><a href="projekty.html" class="nav-link">Projekty</a></li>
-                <li><a href="kontakt.html" class="nav-link active">Kontakt</a></li>
+                <li><a href="/index.html" class="nav-link">Domů</a></li>
+                <li><a href="/index.html#services" class="nav-link">Služby</a></li>
+                <li><a href="/projekty.html" class="nav-link">Projekty</a></li>
+                <li><a href="/kontakt.html" class="nav-link active">Kontakt</a></li>
             </ul>
         </nav>
         <a href="#" class="btn btn-header">Poptávka</a>
@@ -102,16 +102,16 @@
                     <div>
                         <h4>MENU</h4>
                         <ul>
-                            <li><a href="index.html">Domů</a></li>
-                            <li><a href="#services">Služby</a></li>
-                            <li><a href="portfolio.html">Projekty</a></li>
-                            <li><a href="kontakt.html">Kontakt</a></li>
+                            <li><a href="/index.html">Domů</a></li>
+                            <li><a href="/index.html#services">Služby</a></li>
+                            <li><a href="/projekty.html">Projekty</a></li>
+                            <li><a href="/kontakt.html">Kontakt</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4>SOCIAL</h4>
                         <ul>
-                            <li><a href="#">Instagram</a></li>
+                            <li><a href="https://www.instagram.com/zetdesign.cz">Instagram</a></li>
                             <li><a href="#">LinkedIn</a></li>
                             <li><a href="#">Behance</a></li>
                         </ul>
@@ -120,10 +120,42 @@
             </div>
 
             <div class="copyright">
-                <span>&copy; 2024 zet_design. Všechna práva vyhrazena.</span>
+                <span>&copy; 2026 zet_design</span>
             </div>
         </div>
     </footer>
+
+        <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Zavřít">&times;</button>
+            <div class="modal-header">
+                <h2>Pojďme tvořit</h2>
+                <p>Popište nám svůj nápad a my se vám ozveme zpět.</p>
+            </div>
+            <form class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Jméno</label>
+                        <input type="text" placeholder="Vaše jméno" required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="vas@email.cz" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>O čem budeme mluvit?</label>
+                    <textarea rows="5" placeholder="Napište nám, s čím vám můžeme pomoci (web, grafika, sociální sítě..)" required></textarea>
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="btn-submit">Odeslat poptávku</button>
+                    <p class="form-note">Kliknutím na tlačítko souhlasíte se zpracováním údajů.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
 
 </body>
 </html>

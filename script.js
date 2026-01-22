@@ -1,179 +1,128 @@
-/* --- script.js (FINAL VERSION) --- */
+/* =========================================
+   ZET_DESIGN | MAIN SCRIPT
+   ========================================= */
 
-// 1. OTEVŘENÍ DETAILU PROJEKTU
-function openProject(card) {
-    const modal = document.getElementById('project-modal');
-    
-    // Načtení textů z data atributů karty
-    const title = card.getAttribute('data-title');
-    const category = card.getAttribute('data-category');
-    const desc = card.getAttribute('data-desc');
-    
-    // Vložení textů do modalu
-    document.getElementById('modal-title-target').innerText = title;
-    document.getElementById('modal-cat-target').innerText = category;
-    document.getElementById('modal-desc-target').innerText = desc;
+document.addEventListener('DOMContentLoaded', () => {
 
-    // --- LOGIKA PRO OBRÁZKY (GALERIE) ---
-    const galleryContainer = document.getElementById('modal-gallery-target');
-    
-    // Pokud kontejner pro galerii v HTML neexistuje (máš staré HTML), zkusíme staré ID
-    if (!galleryContainer) {
-        console.warn("Nenalezen 'modal-gallery-target'. Zkontroluj HTML v project-modal.");
-        const oldImgTarget = document.getElementById('modal-img-target');
-        if (oldImgTarget) {
-            // Fallback pro starou verzi (jedna fotka na pozadí)
-            const singleImg = card.getAttribute('data-image');
-            oldImgTarget.style.backgroundImage = `url('${singleImg}')`;
-        }
-    } else {
-        // NOVÁ VERZE: Vyčistit galerii a naplnit novými fotkami
-        galleryContainer.innerHTML = ''; 
-        
-        const imagesRaw = card.getAttribute('data-images'); // Hledáme pole fotek
-        const singleImageRaw = card.getAttribute('data-image'); // Hledáme jednu fotku (staré data)
-        
-        let images = [];
+    /* -----------------------------------------
+       1. OBSLUHA MODÁLNÍCH OKEN (KONTAKT)
+       ----------------------------------------- */
+    const contactModal = document.getElementById('contact-modal');
+    // Vybereme všechna tlačítka, která mají otevírat kontakt
+    const openBtns = document.querySelectorAll('.btn-header, .btn-footer, a[href="#contact-modal"]');
+    const closeBtns = document.querySelectorAll('.modal-close');
 
-        // Zkusíme načíst data-images (JSON pole)
-        if (imagesRaw) {
-            try {
-                images = JSON.parse(imagesRaw);
-            } catch (e) {
-                console.error("Chyba v JSON obrázků, beru to jako jeden string.");
-                images = [imagesRaw];
-            }
-        } 
-        // Pokud není pole, zkusíme data-image (starý formát)
-        else if (singleImageRaw) {
-            images = [singleImageRaw];
-        }
-
-        // Vytvoření <img> elementů
-        if (images.length > 0) {
-            images.forEach(imgUrl => {
-                const imgElement = document.createElement('img');
-                imgElement.src = imgUrl;
-                imgElement.alt = title;
-                imgElement.style.width = "100%";
-                imgElement.style.display = "block";
-                imgElement.style.marginBottom = "4px"; // Mezera mezi fotkami
-                galleryContainer.appendChild(imgElement);
-            });
-        }
-    }
-
-    // Zobrazení modalu (přidání třídy active)
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Zamezí scrollování stránky na pozadí
-}
-
-// 2. ZAVŘENÍ MODALU (Projekt i Kontakt)
-function closeProjectModal() {
-    const activeModals = document.querySelectorAll('.modal-overlay.active');
-    activeModals.forEach(modal => {
-        modal.classList.remove('active');
-    });
-    document.body.style.overflow = ''; // Obnoví scrollování
-}
-
-// 3. ZAVŘENÍ KLIKEM MIMO OKNO (Overlay)
-window.onclick = function(event) {
-    if (event.target.classList.contains('modal-overlay')) {
-        event.target.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
-
-// 4. OBSLUHA KONTAKTNÍHO MODALU (pokud není řešeno inline v HTML)
-const contactBtns = document.querySelectorAll('a[href="#contact-modal"], .btn-header, .footer-cta .btn-footer');
-const contactModal = document.getElementById('contact-modal');
-
-if (contactModal) {
-    // Otevření
-    contactBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            // Pokud tlačítko nemá onclick v HTML, otevřeme modal JS
-            if (!btn.getAttribute('onclick')) {
-                e.preventDefault();
+    if (contactModal) {
+        // A) Otevření modalu
+        openBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault(); // Zabrání odskoku na #
                 contactModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Zablokuje scrollování stránky
+            });
+        });
+
+        // B) Zavření křížkem
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                closeAllModals();
+            });
+        });
+
+        // C) Zavření kliknutím mimo okno (na tmavé pozadí)
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeAllModals();
             }
         });
-    });
+    }
 
-    // Zavření křížkem
-    const closeBtn = contactModal.querySelector('.modal-close');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            contactModal.classList.remove('active');
+    // Pomocná funkce pro zavření všech modalů
+    function closeAllModals() {
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.classList.remove('active');
+        });
+        document.body.style.overflow = ''; // Obnoví scrollování
+    }
+
+
+    /* -----------------------------------------
+       2. TYPEWRITER EFEKT (JEN HLAVNÍ STRANA)
+       ----------------------------------------- */
+    const typeText = document.getElementById('type-text');
+    
+    if (typeText) {
+        const words = ["webové stránky", "vizuální identity", "digitální produkty", "unikátní značky"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typeText.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeText.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            // Rychlost psaní vs. mazání
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                // Slovo dopsáno, čekáme
+                isDeleting = true;
+                typeSpeed = 2000; 
+            } else if (isDeleting && charIndex === 0) {
+                // Slovo smazáno, jdeme na další
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Spuštění efektu
+        type();
+    }
+
+
+    /* -----------------------------------------
+       3. INTERAKTIVNÍ KARTY NA MOBILU (SCROLL)
+       ----------------------------------------- */
+    // Tato funkce běží nezávisle na tom, zda jsme na HP nebo podstránce
+    window.addEventListener('scroll', highlightOnScroll);
+
+    function highlightOnScroll() {
+        // Spustíme jen na zařízeních užších než 1024px
+        if (window.innerWidth > 1024) {
+            // Na PC vyčistíme případné třídy a ukončíme funkci
+            document.querySelectorAll('.service-panel').forEach(p => p.classList.remove('mobile-active'));
+            return;
+        }
+
+        const panels = document.querySelectorAll('.service-panel');
+        const centerScreen = window.innerHeight / 2; // Střed obrazovky
+
+        panels.forEach(panel => {
+            const rect = panel.getBoundingClientRect();
+            
+            // Kde je střed dané karty?
+            const panelCenter = rect.top + (rect.height / 2);
+            
+            // Vzdálenost středu karty od středu obrazovky
+            const distance = Math.abs(centerScreen - panelCenter);
+
+            // Tolerance 180px od středu - pokud je v zóně, svítí
+            if (distance < 180) {
+                panel.classList.add('mobile-active');
+            } else {
+                panel.classList.remove('mobile-active');
+            }
         });
     }
-}
 
-// 5. TYPEWRITER EFEKT (Pro hlavní stranu)
-const typeText = document.getElementById('type-text');
-if (typeText) {
-    const words = ["webové stránky", "vizuální identity", "digitální produkty", "unikátní značky"];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function type() {
-        const currentWord = words[wordIndex];
-        
-        if (isDeleting) {
-            typeText.textContent = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            typeText.textContent = currentWord.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        if (!isDeleting && charIndex === currentWord.length) {
-            isDeleting = true;
-            setTimeout(type, 2000); // Čekání po napsání slova
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(type, 500);
-        } else {
-            setTimeout(type, isDeleting ? 50 : 100);
-        }
-    }
-    type();
-
-    /* --- ROZSVÍCENÍ KARET PŘI SCROLLOVÁNÍ (MOBILE) --- */
-
-// Spustí se při scrollování
-window.addEventListener('scroll', highlightOnScroll);
-
-function highlightOnScroll() {
-    // Funkce běží jen na mobilech/tabletech (do šířky 1024px)
-    // Na PC necháme fungovat klasický hover myší
-    if (window.innerWidth > 1024) {
-        // Pro jistotu vyčistíme, kdyby někdo zmenšoval okno prohlížeče
-        document.querySelectorAll('.service-panel').forEach(p => p.classList.remove('mobile-active'));
-        return;
-    }
-
-    const panels = document.querySelectorAll('.service-panel');
-    const centerScreen = window.innerHeight / 2; // Najdeme střed obrazovky
-
-    panels.forEach(panel => {
-        const rect = panel.getBoundingClientRect();
-        
-        // Spočítáme střed dané karty
-        const panelCenter = rect.top + (rect.height / 2);
-        
-        // Změříme vzdálenost středu karty od středu obrazovky
-        const distance = Math.abs(centerScreen - panelCenter);
-
-        // Pokud je karta blízko středu (tolerance 180px), rozsvítíme ji
-        if (distance < 180) {
-            panel.classList.add('mobile-active');
-        } else {
-            panel.classList.remove('mobile-active');
-        }
-    });
-}
-}
+});

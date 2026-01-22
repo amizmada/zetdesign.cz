@@ -16,7 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
@@ -38,7 +38,7 @@
 
     <div class="page-header container">
         <h1 class="page-title">Naše práce</h1>
-        <p class="page-subtitle">Výběr z našich oblíbených projektů. </p>
+        <p class="page-subtitle">Prohlédněte si projekty, které jsme<br>společně s našimi klienty přivedli k životu.</p>
     </div>
 
     <section class="projects-section">
@@ -87,16 +87,16 @@
                     <div>
                         <h4>MENU</h4>
                         <ul>
-                            <li><a href="index.html">Domů</a></li>
-                            <li><a href="index.html#services">Služby</a></li>
-                            <li><a href="portfolio.html">Projekty</a></li>
-                            <li><a href="Kontakt.html">O nás</a></li>
+                            <li><a href="/index.html">Domů</a></li>
+                            <li><a href="/index.html#services">Služby</a></li>
+                            <li><a href="/projekty.html">Projekty</a></li>
+                            <li><a href="/kontakt.html">Kontakt</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4>SOCIAL</h4>
                         <ul>
-                            <li><a href="#">Instagram</a></li>
+                            <li><a href="https://www.instagram.com/zetdesign.cz">Instagram</a></li>
                             <li><a href="#">LinkedIn</a></li>
                             <li><a href="#">Behance</a></li>
                         </ul>
@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <span>&copy; 2024 zet_design. Všechna práva vyhrazena.</span>
+                <span>&copy; 2026 zet_design</span>
             </div>
         </div>
     </footer>
@@ -134,34 +134,14 @@
                         required></textarea>
                 </div>
                 <div class="form-footer">
-                    <button type="submit" class="btn btn-footer full-width">Odeslat poptávku</button>
+                    <button type="submit" class="btn-submit">Odeslat poptávku</button>
                     <p class="form-note">Kliknutím na tlačítko souhlasíte se zpracováním údajů.</p>
                 </div>
             </form>
         </div>
     </div>
 
-    <div id="project-modal" class="modal-overlay">
-        <div class="project-modal-content">
-            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
-
-            <div class="project-modal-gallery" id="modal-gallery-target">
-            </div>
-
-            <div class="project-modal-info">
-                <div class="sticky-wrapper">
-                    <span class="modal-category" id="modal-cat-target">Kategorie</span>
-                    <h2 class="modal-title" id="modal-title-target">Název projektu</h2>
-                    <p class="modal-desc" id="modal-desc-target">Popis...</p>
-                    <a href="#"
-                        onclick="closeProjectModal(); document.querySelector('#contact-modal').classList.add('active');"
-                        class="btn btn-outline" style="align-self: flex-start;">Poptat podobný projekt</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
 </body>
 
 </html>
