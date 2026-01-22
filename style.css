@@ -8,7 +8,7 @@
    6.  Sekce: Projekty (Grid)
    7.  Podstránka: Detail Projektu
    8.  Podstránka: Kontakt (+ Formulář)
-   9.  Podstránka: 404 Error
+   9.  Podstránka: 404 Error & Thank You
    10. Responsivita & Mobilní Menu
    ========================================= */
 
@@ -227,9 +227,15 @@ header {
    4. SEKCE: HERO
    ========================================= */
 .hero {
-    min-height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative;
+    min-height: 90vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    position: relative;
     background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px; padding-top: 60px;
+    background-size: 60px 60px;     
+    padding-top: 60px; 
 }
 .hero::after {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -429,7 +435,7 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
 
 
 /* =========================================
-   11. PODSTRÁNKA: 404 ERROR
+   11. PODSTRÁNKA: 404 ERROR & THANK YOU
    ========================================= */
 .error-section {
     min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center;
@@ -446,6 +452,33 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
 .error-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
 .error-desc { font-size: 1.1rem; color: #666; margin-bottom: 40px; }
 
+/* --- NOVÉ: ÚPRAVA IKONY ÚSPĚCHU (THANK YOU PAGE) --- */
+.success-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px auto;
+    box-shadow: 0 0 30px rgba(30, 255, 0, 0.2);
+    animation: pulseGlow 2s infinite;
+}
+
+.success-icon-wrapper svg {
+    width: 40px;
+    height: 40px;
+    color: var(--accent);
+    transform: translate(-2px, 2px); /* Optické vyrovnání */
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(30, 255, 0, 0.4); }
+    70% { box-shadow: 0 0 0 20px rgba(30, 255, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(30, 255, 0, 0); }
+}
+
 
 /* =========================================
    12. RESPONSIVITA & MOBILNÍ MENU
@@ -455,7 +488,6 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
     display: none;
 }
 
-/* --- Tablet / Menší Laptop (1024px) --- */
 /* --- Tablet / Menší Laptop (1024px) --- */
 @media (max-width: 1024px) {
     .container, header { padding-left: 30px !important; padding-right: 30px !important; }

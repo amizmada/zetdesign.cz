@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt | zet_design</title>
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
     <link rel="stylesheet" href="style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -100,22 +103,26 @@
                 </div>
 
                 <div class="form-card-side">
-                    <form class="contact-form">
+                    <form action="https://formsubmit.co/adamzima@icloud.com" method="POST" class="contact-form">
+                        
+                        <input type="hidden" name="_next" value="https://www.zetdesign.cz/thankyou.html">
+                        
+                        <input type="hidden" name="_captcha" value="false">
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Jméno a příjmení</label>
-                                <input type="text" placeholder="Vaše jméno" required>
+                                <input type="text" name="jmeno" placeholder="Vaše jméno" required>
                             </div>
                             <div class="form-group">
                                 <label>E-mail</label>
-                                <input type="email" placeholder="vas@email.cz" required>
+                                <input type="email" name="email" placeholder="vas@email.cz" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>O čem to bude?</label>
-                            <textarea rows="6" placeholder="Popište nám ve zkratce Vaši představu..."
-                                required></textarea>
+                            <textarea name="zprava" rows="6" placeholder="Popište nám ve zkratce Vaši představu..." required></textarea>
                         </div>
 
                         <div class="form-footer">
@@ -211,5 +218,4 @@
     <script src="/script.js"></script>
 
 </body>
-
 </html>
