@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt | zet_design</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
     <header>
         <a href="index.html" class="logo">
             <span class="accent">&lt;</span>zet<span class="accent">_</span>design<span class="accent">/&gt;</span>
         </a>
-        <nav>
+
+        <nav class="desktop-nav">
             <ul>
                 <li><a href="/index.html" class="nav-link">Domů</a></li>
                 <li><a href="/index.html#services" class="nav-link">Služby</a></li>
@@ -21,7 +26,16 @@
                 <li><a href="/kontakt.html" class="nav-link active">Kontakt</a></li>
             </ul>
         </nav>
-        <a href="#" class="btn btn-header">Poptávka</a>
+
+        <div class="header-actions">
+            <a href="#formular" class="btn btn-header">Poptávka</a>
+
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
 
     <div class="container">
@@ -31,9 +45,9 @@
         </div>
     </div>
 
-    <section class="container">
+    <section class="container" style="margin-bottom: 80px;">
         <div class="contact-cards-grid">
-            
+
             <div class="contact-card">
                 <span class="card-role">Development & Tech</span>
                 <h2 class="card-name">Vojtěch Zelený</h2>
@@ -71,6 +85,52 @@
         </div>
     </section>
 
+    <section id="formular" class="container">
+        <div class="form-section-modern">
+
+            <div class="form-modern-grid">
+
+                <div class="form-text-side">
+                    <div class="accent-line"></div>
+                    <h2>Pojďme tvořit společně.</h2>
+                    <p>
+                        Máte vizi? My máme nástroje. Nezávazně nám napište, co chystáte. <br><br>
+                        Ať už jde o nový web, redesign značky nebo komplexní strategii, jsme připraveni.
+                    </p>
+                </div>
+
+                <div class="form-card-side">
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Jméno a příjmení</label>
+                                <input type="text" placeholder="Jan Novák" required>
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input type="email" placeholder="jan@firma.cz" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>O čem to bude?</label>
+                            <textarea rows="6" placeholder="Popište nám ve zkratce vaši představu..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-footer">
+                            <button type="submit" class="btn-submit">Odeslat nezávaznou poptávku</button>
+                            <p class="form-note">
+                                Vaše data jsou u nás v bezpečí a slouží jen pro naši komunikaci.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section class="billing-section">
         <div class="container">
             <div class="billing-grid">
@@ -92,70 +152,64 @@
 
     <footer id="contact">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-cta">
-                    <h2>Vaše vize,<br>náš design.</h2>
-                    <p>Pojďme vytvořit něco, o čem se bude mluvit. <br> Hledáme partnery pro odvážné projekty.</p>
-                    <a href="#" class="btn btn-footer">Začít spolupráci</a>
-                </div>
-                <div class="footer-links">
-                    <div>
-                        <h4>MENU</h4>
-                        <ul>
-                            <li><a href="/index.html">Domů</a></li>
-                            <li><a href="/index.html#services">Služby</a></li>
-                            <li><a href="/projekty.html">Projekty</a></li>
-                            <li><a href="/kontakt.html">Kontakt</a></li>
-                        </ul>
+            <div class="footer-wrapper">
+                <div class="footer-grid">
+                    <div class="footer-cta">
+                        <h2>Vaše vize,<br>náš design.</h2>
+                        <p>Pojďme vytvořit něco, o čem se bude mluvit. <br> Hledáme partnery pro odvážné projekty.</p>
+                        <a href="#formular" class="btn btn-footer">Začít spolupráci</a>
                     </div>
-                    <div>
-                        <h4>SOCIAL</h4>
-                        <ul>
-                            <li><a href="https://www.instagram.com/zetdesign.cz">Instagram</a></li>
-                            <li><a href="#">LinkedIn</a></li>
-                            <li><a href="#">Behance</a></li>
-                        </ul>
+                    <div class="footer-links">
+                        <div>
+                            <h4>MENU</h4>
+                            <ul>
+                                <li><a href="/index.html">Domů</a></li>
+                                <li><a href="/index.html#services">Služby</a></li>
+                                <li><a href="/projekty.html">Projekty</a></li>
+                                <li><a href="/kontakt.html">Kontakt</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>SOCIAL</h4>
+                            <ul>
+                                <li><a href="https://www.instagram.com/zetdesign.cz">Instagram</a></li>
+                                <li><a href="#">LinkedIn</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="copyright">
-                <span>&copy; 2026 zet_design</span>
+                <div class="copyright">
+                    <span>&copy; 2026 zet_design</span>
+                </div>
             </div>
         </div>
     </footer>
 
-        <div id="contact-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Zavřít">&times;</button>
-            <div class="modal-header">
-                <h2>Pojďme tvořit</h2>
-                <p>Popište nám svůj nápad a my se vám ozveme zpět.</p>
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <ul class="mobile-links">
+                <li><a href="/index.html" onclick="closeMobileMenu()">Domů</a></li>
+                <li><a href="/index.html#services" onclick="closeMobileMenu()">Služby</a></li>
+                <li><a href="/projekty.html" onclick="closeMobileMenu()">Projekty</a></li>
+                <li><a href="/kontakt.html" onclick="closeMobileMenu()">Kontakt</a></li>
+            </ul>
+            <div class="mobile-cta">
+                <p>Máte projekt?</p>
+                <a href="#formular" class="btn-mobile-white" onclick="closeMobileMenu()">
+                    Napište nám
+                </a>
             </div>
-            <form class="contact-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Jméno</label>
-                        <input type="text" placeholder="Vaše jméno" required>
-                    </div>
-                    <div class="form-group">
-                        <label>E-mail</label>
-                        <input type="email" placeholder="vas@email.cz" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>O čem budeme mluvit?</label>
-                    <textarea rows="5" placeholder="Napište nám, s čím vám můžeme pomoci (web, grafika, sociální sítě..)" required></textarea>
-                </div>
-                <div class="form-footer">
-                    <button type="submit" class="btn-submit">Odeslat poptávku</button>
-                    <p class="form-note">Kliknutím na tlačítko souhlasíte se zpracováním údajů.</p>
-                </div>
-            </form>
+            <div class="mobile-social">
+                <a href="#">IG</a>
+                <a href="#">LI</a>
+            </div>
         </div>
     </div>
 
     <script src="/script.js"></script>
 
 </body>
+
 </html>

@@ -6,11 +6,10 @@
    4.  Sekce: Hero
    5.  Sekce: Služby
    6.  Sekce: Projekty (Grid)
-   7.  Modální okna
-   8.  Podstránka: Detail Projektu
-   9.  Podstránka: Kontakt
-   10. Podstránka: 404 Error
-   11. Responsivita (Media Queries)
+   7.  Podstránka: Detail Projektu
+   8.  Podstránka: Kontakt (+ Formulář)
+   9.  Podstránka: 404 Error
+   10. Responsivita & Mobilní Menu
    ========================================= */
 
 
@@ -68,7 +67,7 @@ header {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    z-index: 1000;
+    z-index: 3000;
     border-bottom: 1px solid var(--border);
     width: 100%;
     padding: 0 max(100px, calc((100% - 1600px) / 2 + 150px));     
@@ -81,11 +80,11 @@ header {
     font-size: 1.6rem;
     letter-spacing: -0.5px;
     color: var(--text);
-    z-index: 1001;
+    z-index: 3001;
 }
 .logo .accent { color: var(--accent); }
 
-nav ul { display: flex; gap: 40px; }
+.desktop-nav ul { display: flex; gap: 40px; }
 
 .nav-link { 
     font-family: 'Manrope', sans-serif;
@@ -101,73 +100,119 @@ nav ul { display: flex; gap: 40px; }
 }
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
+/* Obal pro pravou část headeru (Tlačítko + Hamburger) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Hamburger skrytý na PC */
+.hamburger { display: none; }
+
 
 /* =========================================
    3. KOMPONENTY (TLAČÍTKA, FORMULÁŘE)
    ========================================= */
 
-/* --- Základní tlačítko --- */
-.btn {
-    display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px;
-    font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;
-    border-radius: 6px; cursor: pointer; border: none;
-    background-size: 200% 100%; background-position: 100% 0;
-    transition: background-position 0.4s var(--ease-out), color 0.4s var(--ease-out), box-shadow 0.4s ease; 
+/* --- SPOLEČNÝ ZÁKLAD PRO VŠECHNA TLAČÍTKA --- */
+.btn, .btn-header, .btn-footer, .btn-submit, .btn-outline, .btn-mobile-white {
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 16px 36px;
+    font-family: 'Manrope', sans-serif; 
+    font-weight: 800; 
+    font-size: 0.95rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+    border-radius: 6px; 
+    cursor: pointer; 
+    border: none;
     white-space: nowrap;
+    
+    /* Klíčové pro animaci pozadí */
+    background-size: 200% 100%; 
+    background-position: 100% 0;
+    transition: background-position 0.4s var(--ease-out), color 0.4s var(--ease-out), box-shadow 0.4s ease; 
 }
 
 /* 1. Tlačítko v Headeru (Zelená -> Černá) */
 .btn-header { 
     background-image: linear-gradient(to right, #000000 50%, var(--accent) 50%);
-    background-position: 100% 0; color: #000000;
-    box-shadow: 0 4px 15px rgba(30, 255, 0, 0.3); padding: 14px 30px;
+    color: #000000;
+    box-shadow: 0 4px 15px rgba(30, 255, 0, 0.3); 
+    padding: 14px 30px;
 }
-.btn-header:hover { background-position: 0 0; color: #ffffff; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); }
+.btn-header:hover { 
+    background-position: 0 0; 
+    color: #ffffff; 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); 
+}
 
 /* 2. Tlačítko ve Footeru (Bílá -> Zelená) */
 .btn-footer { 
     background-image: linear-gradient(to right, #ffffff 50%, var(--accent) 50%); 
-    color: var(--text); box-shadow: 0 4px 15px rgba(30, 255, 0, 0.3);
+    color: var(--text); 
+    box-shadow: 0 4px 15px rgba(30, 255, 0, 0.3);
 }
-.btn-footer:hover { background-position: 0 0; color: var(--text); }
-
-/* 3. Outline tlačítko (Průhledné) */
-.btn-outline {
-    background: transparent; border: 2px solid var(--text); color: var(--text); position: relative; overflow: hidden; z-index: 1; background-image: none;
+.btn-footer:hover { 
+    background-position: 0 0; 
+    color: var(--text); 
 }
-.btn-outline::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--text); z-index: -1; transition: width 0.3s ease; }
-.btn-outline:hover { color: #fff; border-color: var(--text); }
-.btn-outline:hover::before { width: 100%; }
 
-/* 4. Tlačítko pro odeslání formuláře (Nové) */
+/* 3. Tlačítko pro odeslání formuláře (Zelená -> Černá) */
 .btn-submit {
-    display: flex; align-items: center; justify-content: center; width: 100%; height: 60px;
-    border: none; border-radius: 6px; cursor: pointer;
-    font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
+    width: 100%; height: 60px; font-size: 1.1rem; letter-spacing: 1px;
     background-image: linear-gradient(to right, var(--accent) 50%, var(--text) 50%);
-    background-size: 200% 100%; background-position: 100% 0;
-    color: #ffffff; box-shadow: none;
-    transition: background-position 0.4s var(--ease-out), color 0.4s var(--ease-out), box-shadow 0.4s ease;
+    color: #ffffff; 
+    box-shadow: none;
 }
 .btn-submit:hover {
-    background-position: 0 0; color: var(--text); box-shadow: 0 10px 30px rgba(30, 255, 0, 0.3);
+    background-position: 0 0; 
+    color: var(--text); 
+    box-shadow: 0 10px 30px rgba(30, 255, 0, 0.3);
 }
+
+/* 4. Outline tlačítko (Průhledné) */
+.btn-outline {
+    background: transparent; border: 2px solid var(--text); color: var(--text); 
+    position: relative; overflow: hidden; z-index: 1; background-image: none;
+}
+.btn-outline::before { 
+    content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; 
+    background: var(--text); z-index: -1; transition: width 0.3s ease; 
+}
+.btn-outline:hover { color: #fff; border-color: var(--text); }
+.btn-outline:hover::before { width: 100%; }
 
 /* 5. Tlačítko "Navštívit web" (Detail projektu) */
 .btn-visit {
     background-color: #111; color: #fff !important; border: 1px solid #111;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 24px; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); background-image: none;
+    padding: 16px 24px; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); 
+    background-image: none;
 }
 .btn-visit svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
 .btn-visit:hover {
-    background-color: var(--accent); border-color: var(--accent); color: #111 !important; box-shadow: 0 10px 30px rgba(30, 255, 0, 0.2);
+    background-color: var(--accent); border-color: var(--accent); color: #111 !important; 
+    box-shadow: 0 10px 30px rgba(30, 255, 0, 0.2);
 }
 .btn-visit:hover svg { transform: translate(3px, -3px); }
 
-/* 6. Legacy Full Width (ponecháno pro jistotu) */
-.full-width { width: 100%; border-radius: 6px !important; height: 60px; font-size: 1.1rem !important; cursor: pointer; border: none; font-family: 'Manrope', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; background-size: 200% 100% !important; background-position: 100% 0 !important; background-image: linear-gradient(to right, var(--accent) 50%, var(--text) 50%) !important; color: #fff !important; transition: background-position 0.4s var(--ease-out), color 0.4s var(--ease-out) !important; }
-.full-width:hover { background-position: 0 0 !important; color: var(--text) !important; }
+/* 6. Tlačítko v Mobilním menu (Bílá -> Zelená) */
+.btn-mobile-white {
+    width: 100%; height: 60px;
+    background-image: linear-gradient(to right, #ffffff 50%, var(--accent) 50%);
+    background-size: 200% 100%;
+    background-position: 0 0; 
+    color: #000000; 
+}
+.btn-mobile-white:hover {
+    background-position: 100% 0;
+    color: #000; 
+    box-shadow: 0 10px 30px rgba(30, 255, 0, 0.2);
+}
 
 /* --- Formuláře --- */
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
@@ -272,55 +317,7 @@ nav ul { display: flex; gap: 40px; }
 
 
 /* =========================================
-   7. MODÁLNÍ OKNA (POPUPY)
-   ========================================= */
-.modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(10px);
-    z-index: 2000; display: flex; align-items: center; justify-content: center; 
-    opacity: 0; visibility: hidden; transition: all 0.4s ease; padding: 20px;
-}
-.modal-overlay.active { opacity: 1; visibility: visible; }
-
-/* 7A. Kontaktní formulář */
-.modal-content {
-    background: #ffffff; border-radius: 12px; box-shadow: 0 30px 100px rgba(0,0,0,0.2); 
-    position: relative; transform: translateY(40px) scale(0.95); transition: all 0.5s var(--ease-out);
-    width: 100%; max-width: 600px; padding: 60px;
-}
-.modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
-
-/* 7B. Detail projektu (Legacy) */
-.project-modal-content {
-    background: #ffffff; width: 100%; max-width: 1400px; height: 90vh; border-radius: 16px;
-    display: grid; grid-template-columns: 1.8fr 1fr;
-    position: relative; transform: translateY(40px) scale(0.98);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 50px 100px rgba(0,0,0,0.3); overflow: hidden;
-}
-.modal-overlay.active .project-modal-content { transform: translateY(0) scale(1); }
-.project-modal-gallery { background-color: #f8f8f8; overflow-y: auto; padding: 40px; display: flex; flex-direction: column; gap: 30px; }
-.project-modal-gallery img { width: 100%; display: block; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-.project-modal-info { padding: 60px; overflow-y: auto; background: #fff; border-left: 1px solid var(--border); }
-
-/* Společné prvky modalů */
-.modal-close { 
-    position: absolute; top: 30px; right: 30px; width: 50px; height: 50px; background: #fff; 
-    border: 1px solid var(--border); border-radius: 50%; font-size: 2rem; cursor: pointer; color: var(--text); 
-    display: flex; align-items: center; justify-content: center; line-height: 0; padding-bottom: 4px; 
-    transition: all 0.3s ease; z-index: 10; 
-}
-.modal-close:hover { background: var(--text); color: #fff; border-color: var(--text); transform: rotate(90deg); }
-.modal-header { text-align: left; margin-bottom: 40px; }
-.modal-header h2 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
-.modal-header p { color: #666; font-size: 1.1rem; }
-.modal-category { color: var(--accent); font-family: 'Manrope', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 15px; letter-spacing: 1px; }
-.modal-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 25px; line-height: 1.1; letter-spacing: -1px; }
-.modal-desc { color: #555; font-size: 1.15rem; line-height: 1.8; margin-bottom: 30px; max-width: 500px; }
-.sticky-wrapper { position: sticky; top: 0; display: flex; flex-direction: column; justify-content: center; height: 100%; }
-
-
-/* =========================================
-   8. PODSTRÁNKA: DETAIL PROJEKTU
+   7. PODSTRÁNKA: DETAIL PROJEKTU
    ========================================= */
 .project-detail-grid {
     display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; padding-top: 60px; padding-bottom: 100px;
@@ -344,7 +341,7 @@ nav ul { display: flex; gap: 40px; }
 
 
 /* =========================================
-   9. PODSTRÁNKA: KONTAKT
+   8. PODSTRÁNKA: KONTAKT
    ========================================= */
 .page-header { padding-top: 80px; padding-bottom: 60px; text-align: left; }
 .page-title { font-size: 4rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
@@ -367,6 +364,52 @@ nav ul { display: flex; gap: 40px; }
 .billing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
 .billing-item h4 { margin-bottom: 15px; font-weight: 800; font-size: 1.1rem; }
 .billing-item p { color: #666; font-size: 0.95rem; line-height: 1.7; }
+
+/* --- POPTÁVKOVÁ SEKCE (Modern Light) --- */
+.form-section-modern {
+    background-color: #fafafa; 
+    padding: 80px 60px;
+    border-radius: 24px;
+    margin-bottom: 100px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+}
+
+/* Grid pro rozdělení */
+.form-modern-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; 
+    gap: 80px;
+    align-items: center;
+}
+
+/* Text vlevo */
+.form-text-side h2 {
+    font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 25px; letter-spacing: -1px;
+}
+.form-text-side p {
+    font-size: 1.15rem; color: #666; line-height: 1.7; max-width: 450px;
+}
+.accent-line {
+    width: 60px; height: 4px; background-color: var(--accent); margin-bottom: 25px; border-radius: 4px;
+}
+
+/* Karta vpravo */
+.form-card-side {
+    background: #ffffff; padding: 50px; border-radius: 16px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.05); border: 1px solid var(--border);
+}
+
+.form-card-side input, .form-card-side textarea, .form-card-side select {
+    font-size: 1.05rem; padding: 20px; background: #fcfcfc;
+}
+.form-card-side input:focus, .form-card-side textarea:focus {
+    background: #fff;
+}
+
+/* Oprava scrollování pro formulář */
+#formular { scroll-margin-top: 130px; }
 
 
 /* =========================================
@@ -405,8 +448,12 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
 
 
 /* =========================================
-   12. RESPONSIVITA (MEDIA QUERIES)
+   12. RESPONSIVITA & MOBILNÍ MENU
    ========================================= */
+.mobile-nav, 
+.mobile-menu-overlay {
+    display: none;
+}
 
 /* --- Tablet / Menší Laptop (1024px) --- */
 @media (max-width: 1024px) {
@@ -416,20 +463,94 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
     .services-container { grid-template-columns: repeat(2, 1fr); }
     .modal-title { font-size: 2.5rem; }
     .project-modal-content { grid-template-columns: 1fr; }
+    
+    /* Úpravy formuláře */
+    .form-section-modern { padding: 60px 40px; }
+    .form-modern-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-text-side h2 { font-size: 2.8rem; }
+    .form-text-side { text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .form-text-side p { max-width: 100%; }
 }
 
 /* --- Tablet na výšku / Větší mobil (900px) --- */
 @media (max-width: 900px) {
-    /* Modal: Galerie nahoře, info dole */
-    .modal-overlay { padding: 0; }
-    .project-modal-content { width: 100%; height: 100%; max-height: 100vh; border-radius: 0; transform: none; display: flex; flex-direction: column; overflow-y: auto; }
-    .project-modal-gallery { order: 1; padding: 0; gap: 0; overflow-y: visible; background: transparent; }
-    .project-modal-gallery img { border-radius: 0; box-shadow: none; margin-bottom: 5px; }
-    .project-modal-info { order: 2; padding: 40px 20px 100px 20px; border-left: none; height: auto; overflow-y: visible; }
-    .sticky-wrapper { position: static; height: auto; display: block; }
-    .modal-close { top: 20px; right: 20px; background: rgba(255,255,255,0.9); backdrop-filter: blur(5px); width: 44px; height: 44px; position: fixed; }
+    /* Skryjeme desktop navigaci */
+    .desktop-nav { display: none; }
+    
+    /* Zobrazíme hamburger */
+    .hamburger {
+        display: block; position: relative; width: 30px; height: 20px;
+        background: transparent; border: none; cursor: pointer; padding: 0; z-index: 3002;
+    }
+    
+    .hamburger span {
+        display: block; position: absolute; height: 2px; width: 100%;
+        background-color: var(--text); /* Výchozí černá */
+        border-radius: 2px; left: 0; transition: all 0.3s ease-in-out; transform-origin: center;
+    }
+    
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .hamburger span:nth-child(3) { bottom: 0; }
 
-    /* Layout */
+    /* --- HAMBURGER AKTIVNÍ (Křížek) --- */
+    /* Barva křížku musí být BÍLÁ, aby byla vidět na tmavém menu */
+    .hamburger.active span:nth-child(1) {
+        top: 50%; transform: translateY(-50%) rotate(45deg); background-color: var(--text);
+    }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) {
+        bottom: 50%; transform: translateY(50%) rotate(-45deg); background-color: var(--text);
+    }
+
+    /* --- SIDE DRAWER MENU (Vysouvací panel) --- */
+    .mobile-nav {
+        display: block; position: fixed; top: 90px; height: calc(100vh - 90px);
+        right: 0; width: 320px; max-width: 85%;
+        background-color: var(--dark-bg); color: #fff; z-index: 2000;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.4s step-end;
+        padding: 40px 30px; border-left: 1px solid #222;
+        box-shadow: none; visibility: hidden; /* V základu neviditelné */
+    }
+
+    .mobile-nav.active { 
+        transform: translateX(0);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        visibility: visible;
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), visibility 0s step-start;
+    }
+
+    /* Overlay pod menu */
+    .mobile-menu-overlay {
+        display: block; position: fixed; top: 90px; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6); backdrop-filter: blur(3px);
+        z-index: 1999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    }
+    .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+
+    /* Obsah menu */
+    .mobile-nav-content { display: flex; flex-direction: column; height: 100%; }
+    .mobile-links { list-style: none; margin-bottom: 40px; }
+    .mobile-links li { margin-bottom: 20px; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; border-bottom: 1px solid #222; padding-bottom: 15px; }
+    
+    .mobile-nav.active .mobile-links li:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .mobile-nav.active .mobile-links li:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .mobile-nav.active .mobile-links li:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .mobile-nav.active .mobile-links li:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+
+    .mobile-links a { 
+        font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: block; 
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .mobile-links a:hover { color: var(--accent); padding-left: 15px; } 
+
+    .mobile-cta p { color: #888; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+    .mobile-social { margin-top: auto; display: flex; gap: 20px; }
+    .mobile-social a { color: #888; font-weight: 700; font-size: 1.2rem; }
+    .mobile-social a:hover { color: var(--accent); }
+
+    /* Layout Responsive */
     .page-title { font-size: 3rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 60px; }
@@ -437,7 +558,6 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
     .footer-links { justify-content: center !important; flex-wrap: wrap; gap: 40px !important; }
     .contact-cards-grid { grid-template-columns: 1fr; }
     .billing-grid { grid-template-columns: 1fr; gap: 40px; }
-    nav { display: none; }
     .error-code { font-size: 6rem; letter-spacing: -2px; }
     .error-title { font-size: 1.8rem; }
     .error-section { min-height: 60vh; padding: 60px 20px; }
@@ -479,13 +599,19 @@ footer { background-color: var(--dark-bg); color: var(--dark-text); padding: 120
     .footer-cta p { font-size: 1rem; }
     .footer-links { gap: 30px !important; }
 
-    .modal-content { padding: 30px 20px; width: 95%; border-radius: 12px; }
-    .modal-header h2 { font-size: 1.8rem; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
-    
     .page-title { font-size: 2.5rem; }
     .contact-card { padding: 30px; }
     .billing-section { padding: 60px 0; }
+    .form-section-modern { padding: 40px 25px; border-radius: 16px; }
+    .form-card-side { padding: 30px 20px; }
+    .form-text-side h2 { font-size: 2.2rem; }
+
+    /* Oprava pozice menu a overlay na malém mobilu */
+    .mobile-nav, .mobile-menu-overlay { top: 80px; height: calc(100vh - 80px); }
+    
+    /* Scroll margin menší */
+    #formular { scroll-margin-top: 90px; }
 }
 
 /* --- Malé telefony (do 380px) --- */

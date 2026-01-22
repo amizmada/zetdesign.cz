@@ -29,7 +29,8 @@
         <a href="/index.html" class="logo">
             <span class="accent">&lt;</span>zet<span class="accent">_</span>design<span class="accent">/&gt;</span>
         </a>
-        <nav>
+        
+        <nav class="desktop-nav">
             <ul>
                 <li><a href="/index.html" class="nav-link active">Domů</a></li>
                 <li><a href="/index.html#services" class="nav-link">Služby</a></li>
@@ -37,7 +38,16 @@
                 <li><a href="/kontakt.html" class="nav-link">Kontakt</a></li>
             </ul>
         </nav>
-        <a href="#" class="btn btn-header">Poptávka</a>
+
+        <div class="header-actions">
+            <a href="/kontakt.html#formular" class="btn btn-header">Poptávka</a>
+            
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
 
     <section class="hero">
@@ -153,7 +163,7 @@
                     <div class="footer-cta">
                         <h2>Vaše vize,<br>náš design.</h2>
                         <p>Pojďme vytvořit něco, o čem se bude mluvit. <br> Hledáme partnery pro odvážné projekty.</p>
-                        <a href="#" class="btn btn-footer">Začít spolupráci</a>
+                        <a href="/kontakt.html#formular" class="btn btn-footer">Začít spolupráci</a>
                     </div>
                     <div class="footer-links">
                         <div>
@@ -170,7 +180,6 @@
                             <ul>
                                 <li><a href="https://www.instagram.com/zetdesign.cz">Instagram</a></li>
                                 <li><a href="#">LinkedIn</a></li>
-                                <li><a href="#">Behance</a></li>
                             </ul>
                         </div>
                     </div>
@@ -183,33 +192,25 @@
         </div>
     </footer>
 
-    <div id="contact-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Zavřít">&times;</button>
-            <div class="modal-header">
-                <h2>Pojďme tvořit</h2>
-                <p>Popište nám svůj nápad a my se vám ozveme zpět.</p>
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <ul class="mobile-links">
+                <li><a href="/index.html" onclick="closeMobileMenu()">Domů</a></li>
+                <li><a href="/index.html#services" onclick="closeMobileMenu()">Služby</a></li>
+                <li><a href="/projekty.html" onclick="closeMobileMenu()">Projekty</a></li>
+                <li><a href="/kontakt.html" onclick="closeMobileMenu()">Kontakt</a></li>
+            </ul>
+            <div class="mobile-cta">
+                <p>Máte projekt?</p>
+                <a href="/kontakt.html#formular" class="btn-mobile-white" onclick="closeMobileMenu()">
+                    Napište nám
+                </a>
             </div>
-            <form class="contact-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Jméno</label>
-                        <input type="text" placeholder="Vaše jméno" required>
-                    </div>
-                    <div class="form-group">
-                        <label>E-mail</label>
-                        <input type="email" placeholder="vas@email.cz" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>O čem budeme mluvit?</label>
-                    <textarea rows="5" placeholder="Napište nám, s čím vám můžeme pomoci (web, grafika, sociální sítě..)" required></textarea>
-                </div>
-                <div class="form-footer">
-                    <button type="submit" class="btn-submit">Odeslat poptávku</button>
-                    <p class="form-note">Kliknutím na tlačítko souhlasíte se zpracováním údajů.</p>
-                </div>
-            </form>
+            <div class="mobile-social">
+                <a href="#">IG</a>
+                <a href="#">LI</a>
+            </div>
         </div>
     </div>
 
