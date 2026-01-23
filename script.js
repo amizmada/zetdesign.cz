@@ -115,4 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
     }
+    /* --- OCHRANA OBRÁZKŮ PŘED STAŽENÍM --- */
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault(); // Zablokuje menu "Uložit jako..."
+    }
+});
+
+/* Zablokování přetahování obrázků myší (Drag & Drop) */
+document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+});
 });
