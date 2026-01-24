@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const typeText = document.getElementById('type-text');
     
     if (typeText) {
-        const words = ["webové stránky", "vizuální identity", "digitální produkty", "unikátní značky"];
+        const words = ["moderní weby", "vizuální identity", "vizitky", "loga", "tiskoviny" ];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
